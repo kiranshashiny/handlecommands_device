@@ -1,7 +1,11 @@
-Embedded C Client Library - Introduction
-========================================
+Embedded C Client Library - to handle commands from Bluemix IoTF
+================================================================
 
-Embedded C client for interacting with the Internet of Things Foundation.
+C client for interacting with the Internet of Things Foundation for turning a LED on
+the Raspberry Pi, based on commands from the Application running on your laptop.
+
+Use this code on the Raspberry Pi, and download 'handlecommands_app' in this repository for code to be run on laptop.
+
 
 Dependencies
 ------------
@@ -9,6 +13,11 @@ Dependencies
 1.  [Embedded C MQTT Client]
 
   [Embedded C MQTT Client]: http://www.eclipse.org/paho/clients/c/embedded/
+
+2. A LED connected to Pin 11 of the Raspberry Pi, 
+
+3. A 220 ohm resistor.
+
   
 
 Embedded C Client Library - Devices
@@ -191,7 +200,7 @@ Often times I had difficulty connecting to the Bluemix IoT Foundation as shown.
 Repeatedly trying it over again ( 1 or 2 times ) fixed it .
 
 
-`
+```
 pi@raspberrypi ~/nodetest/iot-signal/samples $ sudo ./handlecommands 
  Calling connectiotf() 
 Connecting to registered service with org 8ubmht
@@ -203,8 +212,19 @@ pi@raspberrypi ~/nodetest/iot-signal/samples $ sudo ./handlecommands
  Calling connectiotf() 
 Connecting to registered service with org 8ubmht
 the auth token being used is [kg&z3L4pxKd?_BRtZm]
-`
+```
 
 
 The request from the application-> Bluemix -> to the device is not coming thru !
 Check that you have set the yield call waiting for incoming requests.
+
+```
+    while(!interrupt)
+        {
+                yield(&client, 1000);
+                sleep(2);
+        }
+```
+
+
+
