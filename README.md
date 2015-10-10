@@ -165,7 +165,7 @@ sudo ./handlecommands
 
 
 A typical output when requests are received should look like:
-`
+```
 pi@raspberrypi ~/nodetest/iot-handlecommands/samples $ sudo ./handlecommands 
  Calling connectiotf() 
 Connecting to registered service with org 8ubmht
@@ -181,7 +181,7 @@ The command received :: blink format string payload (char *)safeical
 Payload received is : [safeical]
   received safe, turning Pin LOW
  ------------------------------------
-`
+```
 
 
 
